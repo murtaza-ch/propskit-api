@@ -1,0 +1,18 @@
+type UpcomingBill {
+  baseCost: Float
+  additionalCost: Float
+}
+
+type Dashboard {
+  executions: Int
+  upcomingBill: UpcomingBill
+  recordsScraped: Int
+  recordsRemaining: Int
+  recordsExceeded: Int
+  billingCycleStart: Date
+  billingCycleEnd: Date
+}
+
+type Query {
+  getMetrics: Dashboard
+}

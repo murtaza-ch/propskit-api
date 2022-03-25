@@ -1,0 +1,46 @@
+scalar Date
+
+type PaymentMethod {
+  id: String
+  last4: String
+  card_brand: String
+  default: Boolean
+}
+
+type Invoice {
+  invoiceId: String
+  number: String
+  status: String
+  amount: Int
+  paid: Int
+  download_url: String
+}
+
+type ActiveSubscription {
+  name: String
+  nextPayment: Int
+  isCanceled: Boolean
+}
+
+type UserBillingInfoPayload {
+  paymentMethods: [PaymentMethod]
+  invoices: [Invoice]
+  activeSubscription: ActiveSubscription
+}
+
+type AddNewCard {
+  client_secret: String!
+}
+
+type Query {
+  userBillingInfo: UserBillingInfoPayload
+  addNewCard: AddNewCard
+}
+
+type SetDefaultPaymentMethodPayload {
+  message: String!
+}
+
+type Mutation {
+  setDefaultPaymentMethod(paymentMethodId: String!): SetDefaultPaymentMethodPayload
+}

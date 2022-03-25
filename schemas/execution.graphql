@@ -1,0 +1,27 @@
+scalar Date
+
+type InputObject {
+  search: String
+  website: String
+  scraperType: String
+  records: Int
+}
+
+type Execution {
+  _id: ID
+  status: String
+  progress: Int
+  message: String
+  loading: Boolean
+  uid: String!
+  started: Date
+  stopped: Date
+  inputsTransformed: InputObject
+  url: String
+  googleSheetsUrl: String
+  records: Int
+}
+
+type Query {
+  getExecuitons: [Execution]
+}

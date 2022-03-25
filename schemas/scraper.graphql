@@ -1,0 +1,61 @@
+input ScraperInputs {
+  records: Int!
+  website: String!
+  scraperType: String!
+  search: String!
+  bedsMin: String
+  bedsMax: String
+  baths: String
+  priceMin: String
+  priceMax: String
+  homeSizeMin: String
+  homeSizeMax: String
+  beds: String
+  garage: String
+  stories: String
+  lotSizeMin: String
+  lotSizeMax: String
+  sqftMin: String
+  sqftMax: String
+  daysOnRealtor: String
+  homeAgeMin: String
+  homeAgeMax: String
+  listingStatus: String
+  keywords: String
+  lotSize: String
+  yearBuiltMin: String
+  yearBuiltMax: String
+  listingType: String
+  lotsizeMax: String
+  hasBasement: String
+  view: [String]
+  views: [String]
+  zillowOwned: String
+  parkingSpots: String
+  soldInLast: String
+  maxHOA: String
+  daysOnZillow: String
+  rentalTypes: [String]
+  pets: [String]
+  unitFeatures: [String]
+  communityFeatures: [String]
+  communityAmenities: [String]
+  propertyType: [String]
+  parking: [String]
+  heatingCooling: [String]
+  insideFeatures: [String]
+  propertyTypes: [String]
+  soldDuration: [String]
+  typesOfListing: [String]
+  otherAmenities: [String]
+  outsideFeatures: [String]
+}
+
+type ScraperMessage {
+  status: String!
+  message: String!
+}
+
+type Mutation {
+  runScraper(inputs: String, inputsTransformed: ScraperInputs): ScraperMessage
+}

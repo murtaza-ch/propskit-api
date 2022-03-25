@@ -1,0 +1,62 @@
+scalar Date
+
+type User {
+  name: String!
+  businessName: String
+  email: String!
+  password: String!
+  authProvider: String
+  subscriptionId: String
+  stripeCustomerId: String
+  jobTitle: String
+  isTrial: Boolean
+  createdAt: Date
+}
+
+type GetCurrentUser {
+  name: String
+  businessName: String
+  email: String
+  jobTitle: String
+  isTrial: Boolean
+}
+
+type IsAuthorized {
+  success: Boolean
+}
+
+type Query {
+  getCurrentUser: GetCurrentUser
+  isAuthorized: IsAuthorized!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type ResetPasswordPayload {
+  message: String!
+}
+
+type SendResetPasswordLinkPayload {
+  message: String!
+}
+
+type Mutation {
+  login(email: String!, password: String!): AuthPayload
+  register(
+    name: String!
+    businessName: String
+    email: String!
+    password: String!
+    authProvider: String
+    subscriptionId: String
+    stripeCustomerId: String
+    jobTitle: String
+    createdAt: String
+    updatedAt: String
+  ): AuthPayload
+  resetPassword(token: String, newPassword: String!, email: String): ResetPasswordPayload
+  sendResetPasswordLink(email: String!): SendResetPasswordLinkPayload
+}

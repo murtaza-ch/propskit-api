@@ -1,0 +1,37 @@
+scalar Date
+
+type Subscription {
+  _id: ID
+  status: String
+  recordsUsed: Int
+  billingCycleStart: Date
+  billingCycleEnd: Date
+  recordsAllowed: Int
+}
+
+type CreateSubscriptionResponse {
+  subscriptionId: String
+  clientSecret: String
+  nextAction: Boolean
+  status: String
+}
+
+type Query {
+  subscriptions: [Subscription]
+}
+
+type Result {
+  success: Boolean
+  message: String
+}
+
+type Mutation {
+  createSubscription(
+    paymentMethodId: String
+    priceId: String
+    priceIdUsage: String
+  ): CreateSubscriptionResponse
+  updateSubscription(priceId: String!, priceIdUsage: String!): Result
+  startTrial: String
+  cancelSubscription(cancelAtPeriodEnd: Boolean!): Result
+}
